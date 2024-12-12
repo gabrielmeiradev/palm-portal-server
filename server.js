@@ -12,7 +12,6 @@ var server = net.createServer(function(socket) {
     socket.on('data', chunk => {
         size += chunk.length;
         elapsed = new Date() - date;
-        socket.write(`\r${(size / (1024 * 1024)).toFixed(2)} MB`)
         process.stdout.write(`\r${(size / (1024 * 1024)).toFixed(2)} MB of data was sent. Total elapsed time is ${elapsed / 1000} s`);
         writer.write(chunk);
       });
